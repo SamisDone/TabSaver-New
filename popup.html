@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TabSaver</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <!-- ========================================
+       HEADER SECTION
+       ======================================== -->
+    <header class="header">
+      <div class="header-content">
+        <!-- Left side: Logo and title -->
+        <div class="header-left">
+          <div class="icon-badge">
+            <svg
+              class="icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"
+              ></path>
+            </svg>
+          </div>
+          <h1 class="title">TabSaver</h1>
+        </div>
+
+        <!-- Right side: Action buttons -->
+        <div class="header-actions">
+          <!-- Settings button -->
+          <button id="settingsBtn" class="icon-btn" title="Settings">
+            <svg
+              class="icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+            </svg>
+          </button>
+          <!-- Dark mode toggle -->
+          <button id="darkModeToggle" class="icon-btn" title="Toggle dark mode">
+            <svg
+              id="sunIcon"
+              class="icon hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              ></path>
+            </svg>
+            <svg
+              id="moonIcon"
+              class="icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================================
+       TOOLBAR SECTION (Search, Export/Import)
+       ======================================== -->
+    <div class="toolbar">
+      <div class="toolbar-row">
+        <!-- Search Input -->
+        <div class="search-wrapper">
+          <span class="search-icon">
+            <svg
+              class="icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </span>
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search sessions..."
+          />
+        </div>
+
+        <!-- Export Button -->
+        <button id="exportBtn" class="toolbar-btn" title="Export sessions">
+          <svg
+            class="icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- Import Button -->
+        <button id="importBtn" class="toolbar-btn" title="Import sessions">
+          <svg
+            class="icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- Cleanup Button -->
+        <button
+          id="cleanupBtn"
+          class="toolbar-btn"
+          title="Cleanup duplicate tabs"
+        >
+          <svg
+            class="icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+            ></path>
+          </svg>
+        </button>
+        <input
+          type="file"
+          id="importFileInput"
+          class="file-input-hidden"
+          accept=".json"
+        />
+      </div>
+    </div>
+
+    <!-- ========================================
+       MAIN CONTENT AREA
+       ======================================== -->
+    <main class="main-content">
+      <!-- Storage Warning (hidden by default) -->
+      <div id="storageWarning" class="storage-warning hidden">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+          ></path>
+        </svg>
+        <div class="storage-warning-content">
+          <span class="storage-warning-text"
+            >Storage is <span id="storagePercent">0</span>% full</span
+          >
+          <div class="storage-progress">
+            <div id="storageProgressBar" class="storage-progress-bar"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Duplicate Warning (hidden by default) -->
+      <div id="duplicateWarning" class="duplicate-warning hidden">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+          ></path>
+        </svg>
+        <div class="duplicate-warning-content">
+          <div class="duplicate-warning-title">Similar session exists</div>
+          <div class="duplicate-warning-text" id="duplicateWarningText"></div>
+        </div>
+      </div>
+
+      <!-- ========================================
+         SAVE SESSION SECTION
+         ======================================== -->
+      <div class="save-section">
+        <label class="label" for="sessionNameInput">Session Name</label>
+        <div class="save-row">
+          <input
+            type="text"
+            id="sessionNameInput"
+            placeholder="e.g., Work Project, Research"
+            class="input"
+            style="flex: 1"
+          />
+          <button
+            id="saveTabsBtn"
+            class="btn btn-primary btn-icon"
+            title="Save current tabs"
+          >
+            <svg
+              class="icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- ========================================
+         SAVED SESSIONS LIST
+         ======================================== -->
+      <div class="sessions-section">
+        <div class="section-header">
+          <h2 class="section-title">Saved Sessions</h2>
+          <span id="sessionCount" class="session-count">0</span>
+        </div>
+
+        <div id="sessionsList" class="sessions-list">
+          <!-- Empty State -->
+          <div id="emptyState" class="empty-state">
+            <div class="empty-icon">
+              <svg
+                class="icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            <p class="empty-title">No saved sessions</p>
+            <p class="empty-subtitle">Save your first session to get started</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ========================================
+       FOOTER
+       ======================================== -->
+    <footer>
+      Developer:
+      <a href="https://github.com/SamisDone" target="_blank"
+        >Samonwita Sarker</a
+      >
+      (<a
+        href="https://www.linkedin.com/in/samonwita-sarker-a87737262/"
+        target="_blank"
+        >LinkedIn</a
+      >) · <kbd class="kbd">Ctrl+Shift+S</kbd> to save
+    </footer>
+
+    <!-- ========================================
+       RENAME MODAL
+       ======================================== -->
+    <div id="renameModal" class="modal hidden">
+      <div class="modal-content">
+        <h3 class="modal-title">Rename Session</h3>
+        <input
+          type="text"
+          id="renameInput"
+          placeholder="Enter new name"
+          class="input"
+        />
+        <div class="modal-actions">
+          <button id="cancelRenameBtn" class="btn btn-secondary">Cancel</button>
+          <button id="confirmRenameBtn" class="btn btn-primary">Rename</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+       TAG SELECTION MODAL
+       ======================================== -->
+    <div id="tagModal" class="modal hidden">
+      <div class="modal-content">
+        <h3 class="modal-title">Add Tag</h3>
+        <p class="modal-description">Select a category for this session</p>
+        <div class="tag-grid" id="tagGrid">
+          <button class="tag-option" data-tag="work">
+            <span class="tag tag-work">Work</span>
+          </button>
+          <button class="tag-option" data-tag="personal">
+            <span class="tag tag-personal">Personal</span>
+          </button>
+          <button class="tag-option" data-tag="research">
+            <span class="tag tag-research">Research</span>
+          </button>
+          <button class="tag-option" data-tag="shopping">
+            <span class="tag tag-shopping">Shopping</span>
+          </button>
+          <button class="tag-option" data-tag="social">
+            <span class="tag tag-social">Social</span>
+          </button>
+          <button class="tag-option" data-tag="entertainment">
+            <span class="tag tag-entertainment">Entertainment</span>
+          </button>
+        </div>
+        <div class="modal-actions">
+          <button id="cancelTagBtn" class="btn btn-secondary">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+       SETTINGS MODAL
+       ======================================== -->
+    <div id="settingsModal" class="modal hidden">
+      <div class="modal-content">
+        <h3 class="modal-title">Settings</h3>
+
+        <!-- Auto-save Setting -->
+        <div class="settings-group">
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Auto-save</div>
+              <div class="settings-description">
+                Automatically save tabs periodically
+              </div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="autoSaveToggle" />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-row" id="autoSaveIntervalRow">
+            <div class="settings-label">Interval</div>
+            <select id="autoSaveInterval" class="select">
+              <option value="15">15 minutes</option>
+              <option value="30" selected>30 minutes</option>
+              <option value="60">1 hour</option>
+              <option value="120">2 hours</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Live Sync Setting -->
+        <div class="settings-group">
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Live sync</div>
+              <div class="settings-description">
+                Automatically update synced sessions
+              </div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="liveSyncToggle" />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-row" id="liveSyncIntervalRow">
+            <div class="settings-label">Interval</div>
+            <select id="liveSyncInterval" class="select">
+              <option value="15">15 minutes</option>
+              <option value="30" selected>30 minutes</option>
+              <option value="60">1 hour</option>
+              <option value="120">2 hours</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Duplicate Detection Setting -->
+        <div class="settings-group">
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Duplicate detection</div>
+              <div class="settings-description">
+                Warn when saving similar sessions
+              </div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="duplicateDetectionToggle" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button id="closeSettingsBtn" class="btn btn-primary" style="flex: 1">
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+       CONFIRM MODAL (for delete with undo info)
+       ======================================== -->
+    <div id="confirmModal" class="modal hidden">
+      <div class="modal-content">
+        <h3 class="modal-title" id="confirmModalTitle">Confirm Action</h3>
+        <p class="modal-description" id="confirmModalDescription"></p>
+        <div class="modal-actions">
+          <button id="confirmModalCancel" class="btn btn-secondary">
+            Cancel
+          </button>
+          <button id="confirmModalConfirm" class="btn btn-destructive">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- JavaScript -->
+    <script src="popup.js"></script>
+  </body>
+</html>
