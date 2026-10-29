@@ -78,7 +78,7 @@
     <!-- Pills -->
     <g font-size="14" font-weight="600">
       <rect x="66" y="270" width="92" height="32" rx="16" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".2"/>
-      <text x="112" y="291" text-anchor="middle" fill="#fff">v2.1.1</text>
+      <text x="112" y="291" text-anchor="middle" fill="#fff">v2.1.2</text>
       <rect x="168" y="270" width="146" height="32" rx="16" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".2"/>
       <text x="241" y="291" text-anchor="middle" fill="#fff">Manifest V3</text>
       <rect x="324" y="270" width="176" height="32" rx="16" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".2"/>

@@ -4,7 +4,7 @@
 
 <br>
 
-[![Version](https://img.shields.io/badge/version-2.1.1-3b82f6?style=for-the-badge)](manifest.json)
+[![Version](https://img.shields.io/badge/version-2.1.2-3b82f6?style=for-the-badge)](manifest.json)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3)
 [![Vanilla JS](https://img.shields.io/badge/Vanilla-JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)](popup.js)
 [![Dependencies](https://img.shields.io/badge/dependencies-0-22c55e?style=for-the-badge)](#-built-with)
@@ -485,7 +485,7 @@ TabSaver-New/
 
 | Version | Changes |
 | :-- | :-- |
-| **2.1.1** | Session names are visible on cards again (actions moved to their own row). The popup footer is no longer clipped. The active Live Sync button is highlighted. Docs refreshed. |
+| **2.1.2** | Session names are visible on cards again (actions moved to their own row). The popup footer is no longer clipped. The active Live Sync button is highlighted. Docs refreshed. |
 | **2.1.0** | **Add tabs** to existing sessions. **Live Sync**, with its own interval, independent of Auto-save. |
 | **2.0** | Redesigned UI with visual thumbnails, duplicate-tab cleanup, tab-group support, tags, search, export/import, undo, drag & drop and dark mode. |
 

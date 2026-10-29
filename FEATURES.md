@@ -1,6 +1,6 @@
-# 🚀 TabSaver 2.1.1: Feature Guide
+# 🚀 TabSaver 2.1.2: Feature Guide
 
-TabSaver 2.1.1 is a premium session manager designed for productivity. Below is a comprehensive list of all features and exactly how to use them.
+TabSaver 2.1.2 is a premium session manager designed for productivity. Below is a comprehensive list of all features and exactly how to use them.
 
 ---
 
