@@ -1,6 +1,6 @@
-# 🚀 TabSaver 2.1.0: Feature Guide
+# 🚀 TabSaver 2.1.1: Feature Guide
 
-TabSaver 2.1.0 is a premium session manager designed for productivity. Below is a comprehensive list of all features and exactly how to use them.
+TabSaver 2.1.1 is a premium session manager designed for productivity. Below is a comprehensive list of all features and exactly how to use them.
 
 ---
 
@@ -18,13 +18,13 @@ TabSaver 2.1.0 is a premium session manager designed for productivity. Below is 
 ### Restore a Session
 
 - **Action**: Opens all tabs from a saved session at once.
-- **How to access**: Click the **Session Title** (blue text) on any session card in the list.
+- **How to access**: Click the blue **Open** button (box-with-arrow icon) on any session card.
 
 ### Selective Restore (Preview)
 
 - **Action**: Pick and choose specific tabs from a session to open instead of the whole group.
 - **How to access**:
-  1. Click the **Chevron (Down Arrow)** on a session card.
+  1. Click the **Chevron (Down Arrow)** on a session card, or click anywhere on the card itself.
   2. Uncheck any tabs you don't want to open.
   3. Click the **"Open Selected Tabs"** button at the bottom of the list.
 
@@ -56,7 +56,7 @@ TabSaver 2.1.0 is a premium session manager designed for productivity. Below is 
 
 ### Real-Time Search
 
-- **Action**: Instantly find sessions by name or URL.
+- **Action**: Instantly find sessions by name, tag, or the titles of the tabs inside them.
 - **How to access**: Start typing in the **Search bar** at the top of the popup.
 - **Shortcut**: Press `Ctrl + F` while the popup is open to focus the search bar.
 
@@ -94,7 +94,14 @@ TabSaver 2.1.0 is a premium session manager designed for productivity. Below is 
 
 ## ⚙️ Settings & Customization
 
-3. Select your interval (15, 30, 60, or 120 minutes).
+### Auto-Save (Periodic Backups)
+
+- **Action**: Automatically saves your current window as a new session on a schedule.
+- **How to access**:
+  1. Click the **Gear icon** in the top-right corner to open **Settings**.
+  2. Turn on **"Auto-save"**.
+  3. Select your interval (15, 30, 60, or 120 minutes).
+- **Feature**: Only the 5 most recent auto-saves are kept; older ones are removed automatically.
 
 ### Live Sync (Auto-Update)
 

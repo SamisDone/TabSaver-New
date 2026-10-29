@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="TabSaver architecture: triggers feed the popup and the background service worker, which read and write chrome.storage.local and call the Chrome tabs and tabGroups APIs">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#6366F1"/>
+    </linearGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#ffffff" fill-opacity=".06"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#64748b"/>
+    </marker>
+    <style>
+      text { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif; }
+      .edge { fill: none; stroke: #334155; stroke-width: 2; }
+      .flow { fill: none; stroke-width: 2; stroke-dasharray: 6 8; animation: dash 1.2s linear infinite; }
+      @keyframes dash { to { stroke-dashoffset: -28; } }
+      .node { stroke-width: 1.5; }
+      .h { font-size: 17px; font-weight: 700; fill: #f8fafc; }
+      .s { font-size: 12.5px; fill: #94a3b8; }
+      .k { font-size: 12px; font-weight: 600; fill: #cbd5e1; }
+      .lbl { font-size: 11.5px; font-weight: 600; fill: #94a3b8; }
+      .tick { animation: tick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      @keyframes tick { 0%,100% { transform: rotate(-12deg) } 50% { transform: rotate(12deg) } }
+      .glow { animation: glow 2.4s ease-in-out infinite; }
+      @keyframes glow { 0%,100% { opacity: .35 } 50% { opacity: .9 } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
+  </defs>
+
+  <rect width="1200" height="560" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="560" rx="20" fill="url(#dots)"/>
+  <text x="40" y="50" font-size="22" font-weight="800" fill="#f8fafc">How TabSaver works</text>
+  <text x="40" y="74" class="s">Everything runs locally: two extension contexts sharing one storage area</text>
+
+  <!-- ===== Triggers column ===== -->
+  <text x="40" y="118" class="lbl" letter-spacing="1.5">TRIGGERS</text>
+  <g>
+    <rect x="40" y="132" width="210" height="62" rx="12" fill="#1e293b" stroke="#334155" class="node"/>
+    <text x="60" y="158" class="k">🖱️  Toolbar icon</text>
+    <text x="60" y="179" class="s">or Ctrl + Shift + T</text>
+
+    <rect x="40" y="214" width="210" height="62" rx="12" fill="#1e293b" stroke="#334155" class="node"/>
+    <text x="60" y="240" class="k">⌨️  Ctrl + Shift + S</text>
+    <text x="60" y="261" class="s">Quick save, anywhere</text>
+
+    <rect x="40" y="296" width="210" height="62" rx="12" fill="#1e293b" stroke="#334155" class="node"/>
+    <text x="60" y="322" class="k">📋  Right-click menu</text>
+    <text x="60" y="343" class="s">Save all / save this tab</text>
+
+    <rect x="40" y="378" width="210" height="96" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-opacity=".6" class="node"/>
+    <g class="tick"><text x="60" y="406" font-size="16">⏰</text></g>
+    <text x="86" y="405" class="k">chrome.alarms</text>
+    <text x="60" y="430" class="s">Auto-save every 15–120 min</text>
+    <text x="60" y="452" class="s">Live Sync every 15–120 min</text>
+  </g>
+
+  <!-- ===== Core column ===== -->
+  <!-- Popup -->
+  <rect x="380" y="116" width="300" height="150" rx="16" fill="#172554" stroke="#3b82f6" class="node"/>
+  <rect x="380" y="116" width="300" height="150" rx="16" fill="none" stroke="#60a5fa" stroke-width="3" class="glow"/>
+  <rect x="402" y="138" width="34" height="34" rx="9" fill="url(#brand)"/>
+  <path d="M410 151a2 2 0 012-2h5l2 2.5h8a2 2 0 012 2v8a2 2 0 01-2 2h-15a2 2 0 01-2-2z" fill="#fff"/>
+  <text x="448" y="161" class="h">Popup</text>
+  <text x="448" y="180" class="s">popup.html · popup.js · popup.css</text>
+  <text x="402" y="210" class="k">Save · Restore · Preview · Tags</text>
+  <text x="402" y="230" class="k">Search · Reorder · Import/Export</text>
+  <text x="402" y="250" class="k">Cleanup duplicates · Settings</text>
+
+  <!-- Service worker -->
+  <rect x="380" y="330" width="300" height="150" rx="16" fill="#1e1b4b" stroke="#6366f1" class="node"/>
+  <text x="402" y="368" font-size="22">⚙️</text>
+  <text x="440" y="362" class="h">Service worker</text>
+  <text x="440" y="381" class="s">background.js (Manifest V3)</text>
+  <text x="402" y="416" class="k">Quick save · Context menus</text>
+  <text x="402" y="436" class="k">Auto-save engine (keeps last 5)</text>
+  <text x="402" y="456" class="k">Live Sync engine · Badge counter</text>
+
+  <!-- ===== Right column ===== -->
+  <!-- Chrome APIs -->
+  <rect x="820" y="116" width="340" height="150" rx="16" fill="#052e16" stroke="#22c55e" class="node"/>
+  <text x="842" y="152" class="h">🌐  Chrome browser</text>
+  <text x="842" y="184" class="k">chrome.tabs: query · create · remove</text>
+  <text x="842" y="206" class="k">chrome.tabGroups: titles &amp; colors</text>
+  <text x="842" y="228" class="k">captureVisibleTab → thumbnails</text>
+  <text x="842" y="250" class="k">action badge · notifications</text>
+
+  <!-- Storage -->
+  <rect x="820" y="330" width="340" height="150" rx="16" fill="#3b0764" stroke="#a855f7" class="node"/>
+  <text x="842" y="366" class="h">💾  chrome.storage.local</text>
+  <text x="842" y="398" class="k">sessions[ ]: name, tabs, groups,</text>
+  <text x="842" y="418" class="k">  tags, screenshot, autoSync</text>
+  <text x="842" y="440" class="k">tabSaverSettings · darkMode</text>
+  <text x="842" y="462" class="s">Never leaves your device</text>
+
+  <!-- ===== Edges ===== -->
+  <path id="e1" class="edge" d="M250 163 C 310 163, 320 180, 378 180" marker-end="url(#arrow)"/>
+  <path id="e2" class="edge" d="M250 245 C 320 245, 320 380, 378 380" marker-end="url(#arrow)"/>
+  <path id="e3" class="edge" d="M250 327 C 320 327, 320 400, 378 400" marker-end="url(#arrow)"/>
+  <path id="e4" class="edge" d="M250 426 C 320 426, 320 420, 378 420" marker-end="url(#arrow)"/>
+  <path id="e5" class="edge" d="M530 268 L 530 328" marker-end="url(#arrow)"/>
+  <path id="e6" class="edge" d="M682 190 L 818 190" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <path id="e7" class="edge" d="M682 230 C 760 230, 740 380, 818 380" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <path id="e8" class="edge" d="M682 405 L 818 405" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <path id="e9" class="edge" d="M682 360 C 760 360, 740 240, 818 240" marker-end="url(#arrow)"/>
+
+  <path class="flow" stroke="#60a5fa" d="M250 163 C 310 163, 320 180, 378 180"/>
+  <path class="flow" stroke="#a78bfa" d="M682 230 C 760 230, 740 380, 818 380"/>
+  <path class="flow" stroke="#a78bfa" d="M682 405 L 818 405"/>
+  <path class="flow" stroke="#4ade80" d="M682 190 L 818 190"/>
+
+  <text x="540" y="304" class="lbl">runtime.sendMessage</text>
+  <text x="702" y="182" class="lbl">read / open tabs</text>
+  <text x="702" y="397" class="lbl">read / write</text>
+
+  <!-- Moving packets -->
+  <g>
+    <circle r="5" fill="#60a5fa"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#e1"/></animateMotion></circle>
+    <circle r="5" fill="#fbbf24"><animateMotion dur="2.6s" repeatCount="indefinite" begin=".4s"><mpath href="#e4"/></animateMotion></circle>
+    <circle r="5" fill="#e2e8f0"><animateMotion dur="2.8s" repeatCount="indefinite" begin="1s"><mpath href="#e2"/></animateMotion></circle>
+    <circle r="5" fill="#e2e8f0"><animateMotion dur="3s" repeatCount="indefinite" begin="1.6s"><mpath href="#e3"/></animateMotion></circle>
+    <circle r="5" fill="#c084fc"><animateMotion dur="2s" repeatCount="indefinite" begin=".2s"><mpath href="#e7"/></animateMotion></circle>
+    <circle r="5" fill="#c084fc"><animateMotion dur="1.6s" repeatCount="indefinite" begin=".8s"><mpath href="#e8"/></animateMotion></circle>
+    <circle r="5" fill="#4ade80"><animateMotion dur="1.8s" repeatCount="indefinite" begin=".5s"><mpath href="#e6"/></animateMotion></circle>
+    <circle r="5" fill="#4ade80"><animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s"><mpath href="#e9"/></animateMotion></circle>
+    <circle r="4" fill="#818cf8"><animateMotion dur="1.5s" repeatCount="indefinite" begin=".3s"><mpath href="#e5"/></animateMotion></circle>
+  </g>
+
+  <text x="40" y="530" class="s">Popup and service worker never share memory. Everything goes through storage, and the worker re-arms its alarms whenever settings change.</text>
+</svg>
