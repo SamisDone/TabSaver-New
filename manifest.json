@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TabSaver",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Save and restore browser tab sessions with ease. Features include export/import, search, tags, auto-save, and more.",
   "permissions": [
     "tabs",

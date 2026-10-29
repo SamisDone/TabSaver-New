@@ -110,6 +110,8 @@ body {
   font-size: 13px;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ================================================================
@@ -339,7 +341,8 @@ body {
    ================================================================ */
 .main-content {
   padding: 10px 12px;
-  height: calc(100% - 76px - 32px);
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   scroll-behavior: smooth;
 }
@@ -589,8 +592,10 @@ body {
 .session-content {
   display: flex;
   flex: 1;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  row-gap: 6px;
   min-width: 0;
 }
 
@@ -787,6 +792,8 @@ body {
 
 /* Session Actions */
 .session-actions {
+  flex-basis: 100%;
+  justify-content: flex-end;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -817,8 +824,11 @@ body {
 }
 
 .action-btn.active {
-  color: var(--primary);
-  background: var(--primary-light);
+  background: hsl(var(--primary) / 0.12);
+}
+
+.action-btn.active .icon {
+  stroke: hsl(var(--primary));
 }
 
 .sync-btn.active svg {
