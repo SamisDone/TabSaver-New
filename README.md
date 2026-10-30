@@ -1,4 +1,7 @@
-# TabSaver
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+  <img src="assets/banner-light.svg" alt="TabSaver" width="100%">
+</picture>
 
 A Chrome extension that saves the tabs in a window as a named session and reopens them later, tab groups included. Sessions, settings and thumbnails stay in your browser.
 

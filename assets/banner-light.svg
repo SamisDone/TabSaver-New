@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="240" viewBox="0 0 960 240" role="img" aria-label="TabSaver. Tabs in a window are saved into a session, then opened again from it.">
+  <defs>
+    <style>
+      .title { font-family: ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 56px; font-weight: 700; letter-spacing: -1.5px; fill: #1f1f1f; }
+      text { font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+      .t2x { font-size: 13px; fill: #6b6b6b; }
+      .h { font-size: 12px; font-weight: 700; fill: #1f1f1f; }
+      .m { font-size: 10.5px; fill: #6b6b6b; }
+      .s { font-size: 11px; fill: #6b6b6b; }
+            .t0 { transform-box: fill-box; transform-origin: center; animation: t0 8s cubic-bezier(.5,0,.3,1) infinite; } @keyframes t0 { 0%,12% { transform: none; opacity: 1 } 18%,58% { transform: translate(176px,122px) scale(.35); opacity: 0 } 64%,100% { transform: none; opacity: 1 } }
+      .t1 { transform-box: fill-box; transform-origin: center; animation: t1 8s cubic-bezier(.5,0,.3,1) infinite; } @keyframes t1 { 0%,18% { transform: none; opacity: 1 } 24%,63% { transform: translate(90px,122px) scale(.35); opacity: 0 } 69%,100% { transform: none; opacity: 1 } }
+      .t2 { transform-box: fill-box; transform-origin: center; animation: t2 8s cubic-bezier(.5,0,.3,1) infinite; } @keyframes t2 { 0%,24% { transform: none; opacity: 1 } 30%,68% { transform: translate(4px,122px) scale(.35); opacity: 0 } 74%,100% { transform: none; opacity: 1 } }
+      .t3 { transform-box: fill-box; transform-origin: center; animation: t3 8s cubic-bezier(.5,0,.3,1) infinite; } @keyframes t3 { 0%,30% { transform: none; opacity: 1 } 36%,73% { transform: translate(-82px,122px) scale(.35); opacity: 0 } 79%,100% { transform: none; opacity: 1 } }
+      .t4 { transform-box: fill-box; transform-origin: center; animation: t4 8s cubic-bezier(.5,0,.3,1) infinite; } @keyframes t4 { 0%,36% { transform: none; opacity: 1 } 42%,78% { transform: translate(-168px,122px) scale(.35); opacity: 0 } 84%,100% { transform: none; opacity: 1 } }
+      .n0 { animation: n0 8s steps(1) infinite; } @keyframes n0 { 0% { opacity: 1 } 18% { opacity: 0 } }
+      .n1 { animation: n1 8s steps(1) infinite; } @keyframes n1 { 0% { opacity: 0 } 18% { opacity: 1 } 24% { opacity: 0 } }
+      .n2 { animation: n2 8s steps(1) infinite; } @keyframes n2 { 0% { opacity: 0 } 24% { opacity: 1 } 30% { opacity: 0 } }
+      .n3 { animation: n3 8s steps(1) infinite; } @keyframes n3 { 0% { opacity: 0 } 30% { opacity: 1 } 36% { opacity: 0 } }
+      .n4 { animation: n4 8s steps(1) infinite; } @keyframes n4 { 0% { opacity: 0 } 36% { opacity: 1 } 42% { opacity: 0 } }
+      .n5 { animation: n5 8s steps(1) infinite; } @keyframes n5 { 0% { opacity: 0 } 42% { opacity: 1 } }
+      .f0 { opacity: 0; animation: f0 8s steps(1) infinite; } @keyframes f0 { 0% { opacity: 0 } 12% { opacity: 1 } 45% { opacity: 0 } }
+      .f1 { opacity: 0; animation: f1 8s steps(1) infinite; } @keyframes f1 { 0% { opacity: 0 } 45% { opacity: 1 } 58% { opacity: 0 } }
+      .f2 { opacity: 0; animation: f2 8s steps(1) infinite; } @keyframes f2 { 0% { opacity: 0 } 58% { opacity: 1 } 84% { opacity: 0 } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .n1, .n2, .n3, .n4, .n5, .f0, .f1, .f2 { opacity: 0 } }
+    </style>
+  </defs>
+
+  <text x="0" y="112" class="title">TabSaver</text>
+  <text x="2" y="150" class="t2x">Save the tabs in a window as a session.</text>
+  <text x="2" y="172" class="t2x">Open them again later, tab groups included.</text>
+
+  <text x="524" y="28" class="s">window</text>
+  <line x1="520" y1="70" x2="960" y2="70" stroke="#cfcfcf" stroke-width="1.25"/>
+  <g class="t0"><rect x="524" y="42" width="80" height="28" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><rect x="533" y="52" width="8" height="8" rx="2" fill="#1f1f1f"/><text x="547" y="60" class="m">PR #42</text></g><g class="t1"><rect x="610" y="42" width="80" height="28" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><rect x="619" y="52" width="8" height="8" rx="2" fill="#1f1f1f"/><text x="633" y="60" class="m">api docs</text></g><g class="t2"><rect x="696" y="42" width="80" height="28" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><rect x="705" y="52" width="8" height="8" rx="2" fill="#1f1f1f"/><text x="719" y="60" class="m">analytics</text></g><g class="t3"><rect x="782" y="42" width="80" height="28" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><rect x="791" y="52" width="8" height="8" rx="2" fill="#1f1f1f"/><text x="805" y="60" class="m">notes</text></g><g class="t4"><rect x="868" y="42" width="80" height="28" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><rect x="877" y="52" width="8" height="8" rx="2" fill="#1f1f1f"/><text x="891" y="60" class="m">design</text></g>
+  <text class="f0 s" x="524" y="122">saving</text><text class="f1 s" x="524" y="122">saved</text><text class="f2 s" x="524" y="122">restoring</text>
+
+  <text x="600" y="142" class="s">session</text>
+  <rect x="600" y="150" width="280" height="58" rx="6" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/>
+  <text x="616" y="176" class="h">Frontend Sprint 14</text>
+  <text class="n0 m" x="616" y="196">0 tabs</text><text class="n1 m" x="616" y="196">1 tab</text><text class="n2 m" x="616" y="196">2 tabs</text><text class="n3 m" x="616" y="196">3 tabs</text><text class="n4 m" x="616" y="196">4 tabs</text><text class="n5 m" x="616" y="196">5 tabs</text>
+</svg>
