@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-label="Auto-save adds a new snapshot session on every tick and keeps the five most recent. Live Sync overwrites the sessions you mark, on its own interval.">
+  <defs>
+    <style>
+      text { font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+      .h { font-size: 13px; font-weight: 700; fill: #1f1f1f; }
+      .t { font-size: 11.5px; font-weight: 700; fill: #1f1f1f; }
+      .m { font-size: 11px; fill: #6b6b6b; }
+      .play { animation: play 10s linear infinite; } @keyframes play { from { transform: translateX(0) } to { transform: translateX(800px) } }
+            .c0 { opacity: 0; animation: c0 10s linear infinite; } @keyframes c0 { 0%,2.5% { opacity: 0 } 4.5%,83.75% { opacity: 1 } 86.75%,100% { opacity: 0 } }
+      .c1 { opacity: 0; animation: c1 10s linear infinite; } @keyframes c1 { 0%,18.75% { opacity: 0 } 20.75%,96% { opacity: 1 } 100% { opacity: 0 } }
+      .c2 { opacity: 0; animation: c2 10s linear infinite; } @keyframes c2 { 0%,35.0% { opacity: 0 } 37.0%,96% { opacity: 1 } 100% { opacity: 0 } }
+      .c3 { opacity: 0; animation: c3 10s linear infinite; } @keyframes c3 { 0%,51.25% { opacity: 0 } 53.25%,96% { opacity: 1 } 100% { opacity: 0 } }
+      .c4 { opacity: 0; animation: c4 10s linear infinite; } @keyframes c4 { 0%,67.5% { opacity: 0 } 69.5%,96% { opacity: 1 } 100% { opacity: 0 } }
+      .c5 { opacity: 0; animation: c5 10s linear infinite; } @keyframes c5 { 0%,83.75% { opacity: 0 } 85.75%,96% { opacity: 1 } 100% { opacity: 0 } }
+      .gone { opacity: 0; animation: gone 10s linear infinite; } @keyframes gone { 0%,83.75% { opacity: 0 } 85.75%,96% { opacity: 1 } 100% { opacity: 0 } }
+      .v0 { animation: v0 10s steps(1) infinite; } @keyframes v0 { 0% { opacity: 1 } 25.0% { opacity: 0 } }
+      .v1 { animation: v1 10s steps(1) infinite; } @keyframes v1 { 0% { opacity: 0 } 25.0% { opacity: 1 } 56.25% { opacity: 0 } }
+      .v2 { animation: v2 10s steps(1) infinite; } @keyframes v2 { 0% { opacity: 0 } 56.25% { opacity: 1 } 87.5% { opacity: 0 } }
+      .v3 { animation: v3 10s steps(1) infinite; } @keyframes v3 { 0% { opacity: 0 } 87.5% { opacity: 1 } }
+      .p0 { opacity: 0; transform-box: fill-box; transform-origin: center; animation: p0 10s ease-out infinite; } @keyframes p0 { 0%,25.0% { opacity: 0; transform: scale(.5) } 25.5% { opacity: 1 } 31.0%,100% { opacity: 0; transform: scale(2.4) } }
+      .p1 { opacity: 0; transform-box: fill-box; transform-origin: center; animation: p1 10s ease-out infinite; } @keyframes p1 { 0%,56.25% { opacity: 0; transform: scale(.5) } 56.75% { opacity: 1 } 62.25%,100% { opacity: 0; transform: scale(2.4) } }
+      .p2 { opacity: 0; transform-box: fill-box; transform-origin: center; animation: p2 10s ease-out infinite; } @keyframes p2 { 0%,87.5% { opacity: 0; transform: scale(.5) } 88.0% { opacity: 1 } 93.5%,100% { opacity: 0; transform: scale(2.4) } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } [class^="c"] { opacity: 1 } .v1, .v2, .v3 { opacity: 0 } }
+    </style>
+  </defs>
+
+  <text x="0" y="56" class="h">auto-save</text>
+  <text x="0" y="74" class="m">new session</text>
+  <text x="0" y="89" class="m">each tick,</text>
+  <text x="0" y="104" class="m">keeps last 5</text>
+  <line x1="140" y1="60" x2="940" y2="60" stroke="#cfcfcf" stroke-width="1.25"/>
+  <line x1="160" y1="54" x2="160" y2="66" stroke="#1f1f1f" stroke-width="1.25"/><line x1="290" y1="54" x2="290" y2="66" stroke="#1f1f1f" stroke-width="1.25"/><line x1="420" y1="54" x2="420" y2="66" stroke="#1f1f1f" stroke-width="1.25"/><line x1="550" y1="54" x2="550" y2="66" stroke="#1f1f1f" stroke-width="1.25"/><line x1="680" y1="54" x2="680" y2="66" stroke="#1f1f1f" stroke-width="1.25"/><line x1="810" y1="54" x2="810" y2="66" stroke="#1f1f1f" stroke-width="1.25"/>
+  <g class="c0"><rect x="104" y="74" width="112" height="44" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><text x="114" y="92" class="t">auto 09:00</text><text x="114" y="109" class="m">8 tabs</text></g><g class="c1"><rect x="234" y="74" width="112" height="44" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><text x="244" y="92" class="t">auto 09:30</text><text x="244" y="109" class="m">9 tabs</text></g><g class="c2"><rect x="364" y="74" width="112" height="44" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><text x="374" y="92" class="t">auto 10:00</text><text x="374" y="109" class="m">11 tabs</text></g><g class="c3"><rect x="494" y="74" width="112" height="44" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><text x="504" y="92" class="t">auto 10:30</text><text x="504" y="109" class="m">11 tabs</text></g><g class="c4"><rect x="624" y="74" width="112" height="44" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><text x="634" y="92" class="t">auto 11:00</text><text x="634" y="109" class="m">7 tabs</text></g><g class="c5"><rect x="754" y="74" width="112" height="44" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/><text x="764" y="92" class="t">auto 11:30</text><text x="764" y="109" class="m">10 tabs</text></g>
+  <text class="gone m" x="114" y="136">oldest removed</text>
+
+  <text x="0" y="216" class="h">live sync</text>
+  <text x="0" y="234" class="m">same session,</text>
+  <text x="0" y="249" class="m">overwritten</text>
+  <text x="0" y="264" class="m">each tick</text>
+  <line x1="140" y1="220" x2="940" y2="220" stroke="#cfcfcf" stroke-width="1.25"/>
+  <line x1="340" y1="214" x2="340" y2="226" stroke="#1f1f1f" stroke-width="1.25"/><circle class="p0" cx="340" cy="220" r="6" fill="none" stroke="#1f1f1f"/><line x1="590" y1="214" x2="590" y2="226" stroke="#1f1f1f" stroke-width="1.25"/><circle class="p1" cx="590" cy="220" r="6" fill="none" stroke="#1f1f1f"/><line x1="840" y1="214" x2="840" y2="226" stroke="#1f1f1f" stroke-width="1.25"/><circle class="p2" cx="840" cy="220" r="6" fill="none" stroke="#1f1f1f"/>
+  <rect x="396" y="236" width="268" height="48" rx="5" fill="#1f1f1f" fill-opacity=".035" stroke="#1f1f1f" stroke-width="1.25"/>
+  <text x="410" y="255" class="t">Frontend Sprint 14</text>
+  <text class="v0 m" x="410" y="273">8 tabs, saved 09:00</text><text class="v1 m" x="410" y="273">10 tabs, synced 09:45</text><text class="v2 m" x="410" y="273">12 tabs, synced 10:30</text><text class="v3 m" x="410" y="273">9 tabs, synced 11:15</text>
+
+  <g class="play"><line x1="140" y1="40" x2="140" y2="290" stroke="#6b6b6b" stroke-width="1" stroke-dasharray="2 3"/></g>
+</svg>

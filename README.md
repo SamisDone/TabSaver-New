@@ -1,356 +1,99 @@
-<div align="center">
+# TabSaver
 
-<img src="assets/banner.svg" alt="TabSaver: save, organize and restore your browser sessions" width="100%">
+A Chrome extension that saves the tabs in a window as a named session and reopens them later, tab groups included. Sessions, settings and thumbnails stay in your browser.
 
-<br>
+Version 2.1.2 · Manifest V3 · plain HTML, CSS and JavaScript, no dependencies
 
-[![Version](https://img.shields.io/badge/version-2.1.2-3b82f6?style=for-the-badge)](manifest.json)
-[![Manifest V3](https://img.shields.io/badge/Manifest-V3-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3)
-[![Vanilla JS](https://img.shields.io/badge/Vanilla-JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)](popup.js)
-[![Dependencies](https://img.shields.io/badge/dependencies-0-22c55e?style=for-the-badge)](#-built-with)
-[![Privacy](https://img.shields.io/badge/data-100%25%20local-0ea5e9?style=for-the-badge)](#-privacy)
+<img src="assets/gifs/hero.gif" alt="Opening TabSaver from the toolbar, saving the window as a session, then restoring another session along with its tab group" width="100%">
 
-**[Features](#-feature-tour)** · **[Gallery](#-gallery)** · **[How it works](#-how-it-works)** · **[Install](#-installation)** · **[Shortcuts](#%EF%B8%8F-keyboard-shortcuts)** · **[Privacy](#-privacy)**
+The original version is at [SamisDone/TabSaver](https://github.com/SamisDone/TabSaver).
 
-<br>
+## Saving and restoring
 
-<img src="assets/gifs/hero.gif" alt="Opening TabSaver, saving the current window as a session and restoring another session with its tab group" width="100%">
+Type a name and press save, or hit <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> anywhere in Chrome. TabSaver records every tab in the window, the title and colour of each tab group, and a screenshot of the tab you were looking at. The blue open button on a card brings it all back.
 
-<sub>Open the popup → name the session → save → restore any session with one click, tab groups included.</sub>
+Click a card to see the tabs inside it. Untick the ones you don't need and press **Open Selected Tabs**. If you've opened more tabs since saving, the **+** button adds them to the session and skips any it already has.
 
-</div>
+<p>
+<img src="assets/gifs/selective-restore.gif" alt="Expanding a session, unticking two tabs and opening only the selected ones" width="382">
+<img src="assets/gifs/add-tabs.gif" alt="Adding the current window's tabs to an existing session" width="382">
+</p>
 
-<br>
+## Keeping sessions organised
 
-**TabSaver** is a Chrome extension for people who live in their browser. It saves a whole window (every tab, every tab group, plus a thumbnail of what you were looking at) as a named **session**. You can bring it back later, all at once or tab by tab. Everything stays on your machine.
+Each session can carry tags: Work, Personal, Research, Shopping, Social and Entertainment. The search box matches session names, tags and the titles of the tabs inside each session, so typing "mdn" finds the session with an MDN page in it.
 
-> [!NOTE]
-> Looking for the original version? Check out the [previous version of TabSaver](https://github.com/SamisDone/TabSaver).
+<img src="assets/gifs/tags-search.gif" alt="Tagging a session as Work, then searching for work and mdn" width="382">
 
----
+Drag a card by its handle to move it. Deleting a session shows an undo button for five seconds.
 
-## ✨ Highlights
+<p>
+<img src="assets/gifs/reorder.gif" alt="Dragging the third session to the top of the list" width="382">
+<img src="assets/gifs/delete-undo.gif" alt="Deleting a session and bringing it back with undo" width="382">
+</p>
 
-<table>
-<tr>
-<td width="33%" valign="top">
+## Saving in the background
 
-### 🖼️ Visual sessions
-Each session stores a thumbnail of the active tab and the favicons of its first tabs, so you can spot it at a glance.
+Settings has two switches. Each runs on its own interval of 15, 30, 60 or 120 minutes, even with the popup closed.
 
-</td>
-<td width="33%" valign="top">
+- **Auto-save** saves the window as a new session on every interval and keeps the five newest.
+- **Live Sync** overwrites the sessions you've marked with the sync button so they match your window.
 
-### 🗂️ Tab groups, kept
-Chrome tab groups are saved with their **titles and colors**, and rebuilt when you restore.
+<img src="assets/gifs/auto-save-live-sync.gif" alt="Turning on auto-save and live sync in settings, then marking a session for live sync" width="382">
 
-</td>
-<td width="33%" valign="top">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/engines-dark.svg">
+  <img src="assets/diagrams/engines-light.svg" alt="Timeline: auto-save adds a new session at each tick and drops the oldest after five; live sync rewrites the same session at each of its own ticks" width="100%">
+</picture>
 
-### 🎯 Selective restore
-Preview any session and open only the tabs you tick.
+## Closing duplicate tabs
 
-</td>
-</tr>
-<tr>
-<td valign="top">
+The trash button in the toolbar closes every tab whose URL is already open somewhere else, across all windows. The first copy stays open. Here it takes the window from twelve tabs to eight.
 
-### 🔄 Live Sync
-Mark a session as "living" and it keeps updating itself to match your window.
+<img src="assets/gifs/cleanup.gif" alt="Clicking cleanup closes four duplicate tabs in the tab strip" width="100%">
 
-</td>
-<td valign="top">
+## Screenshots
 
-### 💾 Auto-save
-Rolling background backups every 15 min – 2 h. The 5 most recent are kept.
+<p>
+<img src="assets/screenshots/popup-light.png" alt="The popup in light mode" width="382">
+<img src="assets/screenshots/popup-dark.png" alt="The popup in dark mode" width="382">
+</p>
 
-</td>
-<td valign="top">
+If the window you're about to save shares 60% or more of its URLs with an existing session, a warning names that session. A storage bar appears once local storage is 70% full.
 
-### 🧹 Duplicate cleanup
-Close every duplicate tab across **all windows** in one click.
+<p>
+<img src="assets/screenshots/duplicate-warning.png" alt="Warning that a similar session already exists" width="382">
+<img src="assets/screenshots/storage-warning.png" alt="Storage usage bar at 84%" width="382">
+</p>
 
-</td>
-</tr>
-<tr>
-<td valign="top">
+<p>
+<img src="assets/screenshots/tags.png" alt="The tag picker" width="382">
+<img src="assets/screenshots/rename.png" alt="The rename dialog" width="382">
+</p>
 
-### 🏷️ Tags & search
-Six color-coded tags, plus live search across names, tags and tab titles.
+## How it works
 
-</td>
-<td valign="top">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/architecture-dark.svg">
+  <img src="assets/diagrams/architecture-light.svg" alt="The popup and service worker both read and write chrome.storage.local and use the chrome.tabs and tabGroups APIs. The toolbar icon opens the popup; the shortcut, right-click menu and alarms go to the service worker." width="100%">
+</picture>
 
-### ↩️ Undo & reorder
-Undo a delete within 5 seconds. Drag and drop to reorder.
+The popup and the service worker don't share memory, so everything goes through `chrome.storage.local`. The worker handles the keyboard shortcut, the right-click menu and the two alarms. It re-arms the alarms whenever the settings change and keeps the toolbar badge in sync with the number of sessions.
 
-</td>
-<td valign="top">
+Restoring opens each saved URL with `chrome.tabs.create`, then regroups the tabs with `chrome.tabs.group` and restores each group's title and colour.
 
-### 📦 Yours to keep
-JSON export/import, a storage meter, dark mode, and zero tracking.
-
-</td>
-</tr>
-</table>
-
----
-
-## 🎬 Feature tour
-
-<table>
-<tr>
-<td width="52%"><img src="assets/gifs/selective-restore.gif" alt="Expanding a session, unticking two tabs and opening only the selected ones"></td>
-<td valign="middle">
-
-### 🎯 Preview & selective restore
-
-Click a card (or its **chevron**) to see every tab in the session with its favicon and domain. Untick what you don't need, then hit **Open Selected Tabs**.
-
-Saved tab groups are rebuilt for the tabs you open.
-
-</td>
-</tr>
-<tr>
-<td valign="middle">
-
-### 🏷️ Tags & instant search
-
-Use the **tag** button to label a session: `Work`, `Personal`, `Research`, `Shopping`, `Social` or `Entertainment`.
-
-The search bar filters as you type. It matches **session names, tags and the titles of the tabs inside**, so searching "mdn" finds the session that has an MDN page in it.
-
-</td>
-<td width="52%"><img src="assets/gifs/tags-search.gif" alt="Adding a Work tag to a session and then filtering sessions by typing in the search bar"></td>
-</tr>
-<tr>
-<td><img src="assets/gifs/add-tabs.gif" alt="Clicking the plus button to add the current window's new tabs to an existing session"></td>
-<td valign="middle">
-
-### ➕ Add tabs to an existing session
-
-Opened more tabs since you saved? Click **+** on a card to add the current window's tabs to it.
-
-URLs already in the session are skipped, and the thumbnail is refreshed.
-
-</td>
-</tr>
-<tr>
-<td valign="middle">
-
-### ⚙️ Auto-save & Live Sync
-
-Open **Settings** to turn on the two background engines, each with **its own interval** (15, 30, 60 or 120 min):
-
-- **Auto-save** creates a new snapshot session on every tick.
-- **Live Sync** keeps the sessions you mark with the 🔄 button in step with your window. The icon spins while sync is on.
-
-</td>
-<td><img src="assets/gifs/auto-save-live-sync.gif" alt="Turning on auto-save and live sync in settings, then enabling live sync on a session"></td>
-</tr>
-<tr>
-<td><img src="assets/gifs/delete-undo.gif" alt="Deleting a session and restoring it with the Undo button in the toast"></td>
-<td valign="middle">
-
-### ↩️ Delete with undo
-
-Deleting is never scary. A toast gives you **5 seconds to undo**, and the session goes back exactly where it was.
-
-</td>
-</tr>
-<tr>
-<td valign="middle">
-
-### ↕️ Drag & drop ordering
-
-Grab the **handle** on the left of any card and drop it where you want. Your order is saved.
-
-<sub>Reordering is paused while a search filter is active, so nothing gets shuffled by accident.</sub>
-
-</td>
-<td><img src="assets/gifs/reorder.gif" alt="Dragging the third session to the top of the list"></td>
-</tr>
-<tr>
-<td><img src="assets/gifs/dark-mode.gif" alt="Toggling between light and dark themes"></td>
-<td valign="middle">
-
-### 🌗 Light & dark themes
-
-A shadcn-inspired design system built on HSL tokens. Flip themes with the sun/moon button and your choice is remembered.
-
-</td>
-</tr>
-<tr>
-<td valign="middle">
-
-### ⌨️ Keyboard-first
-
-<kbd>Ctrl</kbd> + <kbd>F</kbd> jumps to search and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> saves the window instantly. A session saved without a name gets a timestamped one.
-
-<kbd>Esc</kbd> closes any dialog.
-
-</td>
-<td><img src="assets/gifs/shortcuts.gif" alt="Using Ctrl+F to search and Ctrl+Shift+S to save a session"></td>
-</tr>
-</table>
-
-### 🧹 One-click duplicate cleanup
-
-The cleanup button in the toolbar scans **every open window** and closes duplicate tabs, keeping the first copy of each URL. Below, the tab strip drops from 12 tabs to 8.
-
-<div align="center">
-<img src="assets/gifs/cleanup.gif" alt="Clicking the cleanup button closes four duplicate tabs from the browser's tab strip" width="100%">
-</div>
-
----
-
-## ⏱️ Auto-save vs Live Sync
-
-The two engines are easy to mix up, so here is the difference:
-
-<div align="center">
-<img src="assets/engines.svg" alt="Timeline: Auto-save adds a new snapshot each tick and drops the oldest after five; Live Sync updates one chosen session in place on its own interval" width="100%">
-</div>
-
-| | 💾 Auto-save | 🔄 Live Sync |
-| :-- | :-- | :-- |
-| **What it does** | Creates a **new** session each time | **Overwrites** sessions you've marked |
-| **Good for** | A safety net / crash recovery | A "living" workspace that's always current |
-| **Turn on** | Settings → Auto-save | Settings → Live sync **and** 🔄 on a card |
-| **Interval** | 15 / 30 / 60 / 120 min | 15 / 30 / 60 / 120 min (independent) |
-| **Retention** | Keeps the 5 most recent auto-saves | One session per card, always latest |
-| **Naming** | `Auto-save <date> <time>`, tagged `auto` | Keeps your name and tags |
-
----
-
-## 🖼 Gallery
-
-<table>
-<tr>
-<td align="center" width="50%"><img src="assets/screenshots/popup-light.png" alt="TabSaver popup in light mode"><br><sub><b>Light</b></sub></td>
-<td align="center" width="50%"><img src="assets/screenshots/popup-dark.png" alt="TabSaver popup in dark mode"><br><sub><b>Dark</b></sub></td>
-</tr>
-</table>
-
-<div align="center">
-<img src="assets/screenshots/browser-dark.png" alt="TabSaver popup open over a dark browser window" width="100%">
-<sub>The popup sits under the toolbar icon, and the badge shows how many sessions you have.</sub>
-</div>
-
-<br>
-
-<table>
-<tr>
-<td align="center" width="33%"><img src="assets/screenshots/preview.png" alt="Session preview with tab checkboxes"><br><sub><b>Tab-by-tab preview</b></sub></td>
-<td align="center" width="33%"><img src="assets/screenshots/tags.png" alt="Tag picker dialog"><br><sub><b>Six color-coded tags</b></sub></td>
-<td align="center" width="33%"><img src="assets/screenshots/rename.png" alt="Rename session dialog"><br><sub><b>Rename in place</b></sub></td>
-</tr>
-<tr>
-<td align="center"><img src="assets/screenshots/duplicate-warning.png" alt="Warning that a similar session already exists"><br><sub><b>"Similar session exists" warning</b><br>shown at ≥ 60% URL overlap</sub></td>
-<td align="center"><img src="assets/screenshots/storage-warning.png" alt="Storage usage warning bar"><br><sub><b>Storage meter</b><br>appears from 70% usage</sub></td>
-<td align="center"><img src="assets/screenshots/settings-dark.png" alt="Settings dialog in dark mode"><br><sub><b>Settings</b><br>two engines, independent intervals</sub></td>
-</tr>
-</table>
-
-<details>
-<summary><b>More screenshots</b></summary>
-<br>
-<table>
-<tr>
-<td align="center" width="50%"><img src="assets/screenshots/settings.png" alt="Settings dialog in light mode"><br><sub>Settings (light)</sub></td>
-<td align="center" width="50%"><img src="assets/screenshots/empty.png" alt="Empty state when there are no saved sessions"><br><sub>First run / empty state</sub></td>
-</tr>
-</table>
-<img src="assets/screenshots/browser-light.png" alt="TabSaver popup open over a light browser window" width="100%">
-</details>
-
-<sub><i>Demo media is recorded from the real popup code, running against sample data in a mock browser window.</i></sub>
-
----
-
-## 🧠 How it works
-
-<div align="center">
-<img src="assets/architecture.svg" alt="Architecture: triggers (toolbar, shortcut, context menu, alarms) feed the popup and service worker; both read and write chrome.storage.local and call the Chrome tabs and tabGroups APIs" width="100%">
-</div>
-
-<details open>
-<summary><b>💾 What happens when you click Save</b></summary>
-<br>
-
-```mermaid
-sequenceDiagram
-    autonumber
-    actor You
-    participant P as Popup
-    participant C as Chrome APIs
-    participant S as chrome.storage.local
-    participant W as Service worker
-    You->>P: Type a name, click Save
-    P->>C: tabs.captureVisibleTab()
-    C-->>P: JPEG thumbnail
-    P->>C: tabs.query({ currentWindow })
-    P->>C: tabGroups.query()
-    C-->>P: Tabs + group titles/colors
-    P->>S: set({ sessions })
-    P->>W: runtime.sendMessage("updateBadge")
-    W->>C: action.setBadgeText(count)
-    P-->>You: ✅ Toast + new session card
-```
-
-</details>
-
-<details>
-<summary><b>📂 What happens when you restore</b></summary>
-<br>
-
-```mermaid
-flowchart LR
-    A([Open / Open Selected]) --> B[tabs.create for each saved URL]
-    B --> C{Session has<br/>tab groups?}
-    C -- yes --> D[tabs.group per original group]
-    D --> E[tabGroups.update<br/>title + color]
-    E --> F([✅ Opened N tabs])
-    C -- no --> F
-```
-
-</details>
-
-<details>
-<summary><b>⏰ What the background worker does</b></summary>
-<br>
-
-```mermaid
-flowchart TD
-    I([Install / browser start]) --> M[Create context menus]
-    I --> AL[Arm alarms from settings]
-    I --> BD[Update badge]
-    SC[Settings changed] --> AL
-    AL --> A1{{autoSaveAlarm}}
-    AL --> A2{{liveSyncAlarm}}
-    A1 --> N1[New 'Auto-save' session<br/>drop oldest if more than 5]
-    A2 --> N2[Overwrite every session<br/>with autoSync = true]
-    K[Ctrl+Shift+S / context menu] --> Q[Quick save + notification]
-```
-
-</details>
-
-<details>
-<summary><b>🗃️ Session data model</b></summary>
-<br>
-
-Every session is a plain object in `chrome.storage.local` under the `sessions` key. This is also the format used by **Export** / **Import**.
+Sessions are stored as plain objects, and the same shape is used for export and import:
 
 ```jsonc
 {
   "name": "Frontend Sprint 14",
-  "timestamp": 1761800000000,          // creation time, also the session's id
+  "timestamp": 1761800000000,   // creation time, also used as the id
   "tabCount": 8,
-  "tags": ["work"],                    // work | personal | research | shopping | social | entertainment
-  "autoSync": true,                    // Live Sync enabled for this session
-  "screenshot": "data:image/jpeg;base64,…",
+  "tags": ["work"],
+  "autoSync": true,             // Live Sync on for this session
+  "screenshot": "data:image/jpeg;base64,...",
   "tabs": [
-    { "title": "Pull request #42", "url": "https://github.com/…", "favIconUrl": "https://…", "groupId": 21 }
+    { "title": "Pull request #42", "url": "https://github.com/...", "favIconUrl": "https://...", "groupId": 21 }
   ],
   "tabGroups": {
     "21": { "title": "Repo", "color": "purple" }
@@ -358,160 +101,69 @@ Every session is a plain object in `chrome.storage.local` under the `sessions` k
 }
 ```
 
-</details>
+## Installing
 
----
-
-## 🚀 Installation
-
-TabSaver is loaded as an unpacked extension in Chrome or another Chromium browser with extension support (Edge, Brave…).
-
-```text
- ① Get the code  ─▶  ② chrome://extensions  ─▶  ③ Developer mode ON  ─▶  ④ Load unpacked  ─▶  ⑤ Pin 📌
-```
-
-1. **Get the code.** Either clone it:
+1. Clone the repository, or download it with **Code → Download ZIP** and unzip it.
    ```bash
    git clone https://github.com/SamisDone/TabSaver-New.git
    ```
-   or use **Code → Download ZIP** on this page and unzip it.
-2. Open **`chrome://extensions`** (or `edge://extensions`).
-3. Turn on **Developer mode** (top-right toggle).
-4. Click **Load unpacked** and select the folder that contains `manifest.json`.
-5. Click the 🧩 puzzle icon in the toolbar and **pin TabSaver** so it's one click away.
+2. Go to `chrome://extensions` and turn on **Developer mode**.
+3. Click **Load unpacked** and choose the folder that contains `manifest.json`.
+4. Pin TabSaver from the extensions menu so it sits in the toolbar.
 
-> [!TIP]
-> To update later, `git pull` (or re-download), then hit the ↻ **reload** button on the TabSaver card in `chrome://extensions`.
+To update, pull the latest code and press reload on the TabSaver card in `chrome://extensions`.
 
----
+## Shortcuts
 
-## ⌨️ Keyboard shortcuts
-
-| Shortcut | Where | Action |
+| Keys | Where | Does |
 | :-- | :-- | :-- |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> | Anywhere in Chrome | Quick-save the current window (a notification confirms it) |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | Anywhere in Chrome | Open the TabSaver popup |
-| <kbd>Ctrl</kbd> + <kbd>F</kbd> | Inside the popup | Focus the search bar |
-| <kbd>Enter</kbd> | Session name / rename field | Save / confirm |
-| <kbd>Esc</kbd> | Inside the popup | Close any open dialog |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> | Anywhere in Chrome | Save the current window |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> | Anywhere in Chrome | Open TabSaver |
+| <kbd>Ctrl</kbd>+<kbd>F</kbd> | In the popup | Focus search |
+| <kbd>Esc</kbd> | In the popup | Close a dialog |
 
-On macOS use <kbd>⌘</kbd> instead of <kbd>Ctrl</kbd>. You can change the global shortcuts at **`chrome://extensions/shortcuts`**.
+Use <kbd>⌘</kbd> instead of <kbd>Ctrl</kbd> on a Mac. <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> is also Chrome's "reopen closed tab" shortcut. You can change either shortcut at `chrome://extensions/shortcuts`.
 
-> [!IMPORTANT]
-> <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> is also Chrome's built-in "reopen closed tab" shortcut. If you'd rather keep Chrome's behaviour, assign TabSaver a different key at `chrome://extensions/shortcuts`.
+Right-clicking a page gives you **Save all tabs to TabSaver** and **Add this tab to new session**.
 
-### Right-click menu
+## Permissions
 
-| Menu item | Appears on | Does |
-| :-- | :-- | :-- |
-| **Save all tabs to TabSaver** | Page & toolbar icon | Saves the whole window as a "Quick Save" session |
-| **Add this tab to new session** | Page | Saves just the current tab as its own session |
-| **Open TabSaver** | Toolbar icon | Opens the popup |
-
----
-
-## 🧭 Card controls at a glance
-
-| Control | What it does |
+| Permission | Why |
 | :-- | :-- |
-| ☰ **Handle** | Drag to reorder |
-| ⌄ **Chevron** / click card | Expand the tab-by-tab preview |
-| ↗ **Open** (blue) | Restore every tab, with groups |
-| 🔄 **Sync** | Toggle Live Sync for this session |
-| ➕ **Add** | Add the current window's new tabs to this session |
-| 🏷️ **Tag** | Add a category tag (click × on a tag to remove it) |
-| ✏️ **Rename** | Rename the session |
-| 🗑️ **Delete** | Delete, with a 5-second undo |
+| `tabs` | Read titles, URLs and favicons; open and close tabs |
+| `activeTab` | Take the thumbnail of the tab you're on |
+| `tabGroups` | Save and rebuild tab groups |
+| `storage` | Keep sessions and settings on your device |
+| `alarms` | Run auto-save and Live Sync on schedule |
+| `contextMenus` | The right-click entries |
+| `notifications` | Confirm a save made from the shortcut or right-click menu |
 
-**Toolbar:** ⬆ Export JSON · ⬇ Import JSON · 🧹 Close duplicate tabs · ⚙️ Settings · 🌙 Theme
+## Privacy
 
-For a step-by-step walkthrough of every feature, see **[FEATURES.md](FEATURES.md)**.
+There are no accounts, analytics or servers. Everything is stored in `chrome.storage.local` and never sent anywhere. The only network requests are your browser loading the favicons of saved tabs. The full policy is in [privacy policy.md](privacy%20policy.md).
 
----
-
-## 🔒 Privacy
-
-- **No servers, no analytics, no accounts.** TabSaver never sends your data anywhere. The only network traffic is your browser loading the favicons of saved tabs.
-- All sessions, settings and thumbnails live in `chrome.storage.local` on your device.
-- Export files are written only where you choose to save them.
-
-Full policy: **[privacy policy.md](privacy%20policy.md)**
-
-<details>
-<summary><b>Why each permission is needed</b></summary>
-<br>
-
-| Permission | Used for |
-| :-- | :-- |
-| `tabs` | Reading tab titles, URLs and favicons to save them; opening and closing tabs |
-| `activeTab` | Capturing the thumbnail of the tab you're looking at |
-| `tabGroups` | Saving and recreating tab-group titles and colors |
-| `storage` | Keeping sessions and settings on your device |
-| `alarms` | Running Auto-save and Live Sync on schedule |
-| `contextMenus` | The right-click "Save to TabSaver" entries |
-| `notifications` | Confirming a quick save made with the keyboard shortcut or right-click menu |
-
-</details>
-
----
-
-## 🛠 Built with
-
-<table>
-<tr>
-<td align="center" width="25%"><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5"><br><sub>Semantic popup markup</sub></td>
-<td align="center" width="25%"><img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3"><br><sub>HSL design tokens, light/dark, micro-animations</sub></td>
-<td align="center" width="25%"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript"><br><sub>No frameworks, no build step</sub></td>
-<td align="center" width="25%"><img src="https://img.shields.io/badge/Chrome%20MV3-4285F4?style=flat-square&logo=googlechrome&logoColor=white" alt="Chrome Manifest V3"><br><sub>Service worker + alarms</sub></td>
-</tr>
-</table>
+## Files
 
 ```text
-TabSaver-New/
-├── manifest.json      # MV3 manifest: permissions, shortcuts, service worker
-├── background.js      # Service worker: auto-save, live sync, context menus, badge
-├── popup.html         # Popup markup + dialogs (rename, tags, settings)
-├── popup.css          # shadcn-inspired design system, light & dark
-├── popup.js           # All popup logic: save/restore, search, tags, drag & drop…
-├── icons/             # Extension icon (PNG + SVG source)
-├── assets/            # README media: banner, diagrams, screenshots, GIFs
-├── FEATURES.md        # Detailed how-to for every feature
-└── privacy policy.md
+manifest.json       permissions, shortcuts, service worker
+background.js       quick save, context menus, auto-save, live sync, badge
+popup.html          popup markup and dialogs
+popup.css           styles, light and dark
+popup.js            popup logic
+icons/              extension icon
+assets/             images used in this README
+FEATURES.md         step-by-step guide to every feature
+privacy policy.md
 ```
 
----
+## Changelog
 
-## 📝 Changelog
+**2.1.2.** Session names show on every card again, the popup footer is no longer cut off, and sessions with Live Sync on are highlighted.
 
-| Version | Changes |
-| :-- | :-- |
-| **2.1.2** | Session names are visible on cards again (actions moved to their own row). The popup footer is no longer clipped. The active Live Sync button is highlighted. Docs refreshed. |
-| **2.1.0** | **Add tabs** to existing sessions. **Live Sync**, with its own interval, independent of Auto-save. |
-| **2.0** | Redesigned UI with visual thumbnails, duplicate-tab cleanup, tab-group support, tags, search, export/import, undo, drag & drop and dark mode. |
+**2.1.0.** The + button for adding tabs to an existing session, and Live Sync, with its own interval separate from auto-save.
 
----
+**2.0.** Redesign with thumbnails, duplicate cleanup, tab groups, tags, search, export and import, undo, drag and drop, and dark mode.
 
-## 👤 Developer
+## Author
 
-<table>
-<tr>
-<td>
-
-**Samonwita Sarker**
-
-[![GitHub](https://img.shields.io/badge/GitHub-SamisDone-181717?style=for-the-badge&logo=github)](https://github.com/SamisDone)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Samonwita%20Sarker-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/samonwita-sarker-a87737262/)
-
-</td>
-</tr>
-</table>
-
-<div align="center">
-
-<br>
-
-**If TabSaver saves you from tab chaos, consider giving it a ⭐**
-
-<sub>Created with a focus on performance, privacy, and productivity.</sub>
-
-</div>
+Samonwita Sarker · [GitHub](https://github.com/SamisDone) · [LinkedIn](https://www.linkedin.com/in/samonwita-sarker-a87737262/)
